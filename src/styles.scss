@@ -5,18 +5,21 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+@include mat.core();
+
 html {
   height: 100%;
-  @include mat.theme(
-    (
-      color: (
-        primary: mat.$magenta-palette,
-        tertiary: mat.$violet-palette,
-      ),
-      typography: Roboto,
-      density: 0,
-    )
-  );
+
+  @include mat.theme((
+    color: (
+      primary: mat.$magenta-palette,
+      secondary: mat.$violet-palette,
+      tertiary: mat.$red-palette,
+      error: mat.$red-palette
+    ),
+    typography: Roboto,
+    density: 0
+  ));
 }
 
 body {
@@ -58,3 +61,36 @@ body {
   width: 100%;
 }
 
+.m3-primary {
+  --mat-toolbar-container-background-color: var(--mat-sys-primary);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-primary);
+}
+
+.m3-secondary {
+  --mat-toolbar-container-background-color: var(--mat-sys-secondary);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-secondary);
+}
+
+.m3-tertiary {
+  background: var(--mat-sys-tertiary);
+  color: var(--mat-sys-on-tertiary);
+
+  /* toolbar */
+  --mat-toolbar-container-background-color: var(--mat-sys-tertiary);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-tertiary);
+}
+
+.m3-surface {
+  --mat-toolbar-container-background-color: var(--mat-sys-surface);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-surface);
+}
+
+.m3-surface-container {
+  --mat-toolbar-container-background-color: var(--mat-sys-surface-container);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-surface);
+}
+
+.btn-tertiary {
+  --mdc-filled-button-container-color: var(--mat-sys-tertiary);
+  --mdc-filled-button-label-text-color: var(--mat-sys-on-tertiary);
+}
